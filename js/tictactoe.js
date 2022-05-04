@@ -1,7 +1,7 @@
 let activePlayer = 'X';
 
 let selectedSquares = [];
-
+//place image for X or O
 function placeXorO (squareNumber) {
     if (!selectedSquares.some(element => element.includes(squareNumber))) {
         let select = document.getElementById(squareNumber);
@@ -21,7 +21,7 @@ if (activePlayer === 'X') {
     activePlayer = 'X';
 }
 
-
+//play place sound effect
 audio('./media/place1.mp3');
 
 if(activePlayer === 'O'){
@@ -42,7 +42,7 @@ function computersTurn() {
     }
 }
 }
-
+//win conditions
 function checkWinConditions () {
     if (arrayIncludes('0X', '1X', '2X')) { drawWinLine(50, 100, 558, 100)}
     else if (arrayIncludes('3X', '4X', '5X')) { drawWinLine(50, 304, 558, 304)}
@@ -121,11 +121,12 @@ function clear() {
     c.clearRect(0, 0, 608, 608);
 }
 disableClick();
+//play win sound effect
 audio('./media/win1.mp3');
 animationLineDrawing();
 setTimeout(function () { clear(); resetGame(); }, 1000);
 }
-
+//reset game
 function resetGame() {
     for (let i = 0; i < 9; i++) {
         let square = document.getElementById(String(i))
