@@ -84,7 +84,7 @@ function audio(audioURL) {
     audio.play();
 }
 
-function drawWInLine(coordX1, coordY1, coordX2, coordY2) {
+function drawWinLine(coordX1, coordY1, coordX2, coordY2) {
     const canvas = document.getElementById('win-lines');
     const c = canvas.getContext('2d');
     let x1 = coordX1,
@@ -119,11 +119,12 @@ function drawWInLine(coordX1, coordY1, coordX2, coordY2) {
 function clear() {
     const animationLoop = requestAnimationFrame(clear);
     c.clearRect(0, 0, 608, 608);
+    cancelAnimationFrame(animationLoop);
 }
 disableClick();
 //play win sound effect
 audio('./media/win1.mp3');
-animationLineDrawing();
+animateLineDrawing();
 setTimeout(function () { clear(); resetGame(); }, 1000);
 }
 //reset game
